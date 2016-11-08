@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="../public/static/css/weui.min.css">
+    <link rel="stylesheet" href="../public/static/css/index.css">
+  </head>
+  <body>
+    <div class="join_in">
+      <div class="weui_btn_area">
+        <a id="submit_btn" href="#" class="weui_btn weui_btn_primary">投票</a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="banner">
+        <img src="../public/static/img/banner.jpg" alt="banner">
+      </div>
+      <section class="explain">
+        <div class="weui_panel weui_panel_access">
+          <div class="weui_panel_bd">
+            <div class="weui_media_box weui_media_text">
+              
+              <h4 class="weui_media_title">投票时间: </h4>
+              <p class="weui_media_desc">11月11日-11月12日下午6点</p>
+
+              <h4 class="weui_media_title">奖励: </h4>
+              <p class="weui_media_desc">各学院选取前两名进入总决赛
+              </p>
+              <h4 class="weui_media_title">投票规则: </h4>
+              <p class="weui_media_desc">每人每天可投两票, 只可向一个学院投一票
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="nav-bar-wrap">
+        <div data-list-index="0" class="nav-bar-active nav-bar">通信学院</div>
+        <div data-list-index="1" class="nav-bar">传媒学院</div>
+      </section>
+      <section class="list-wrap" id="college-communication">
+
+        <div class="list">
+          <a id="detail-link" href="{{work_link}}" class="weui_media_box weui_media_appmsg">
+            <div class="weui_media_hd">
+              <img id="singer_head" class="weui_media_appmsg_thumb" src="../public/static/img/banhui/banhui.png" alt="">
+            </div>
+            <div class="weui_media_bd">
+              <h4 id="song_name" class="weui_media_title">红岩班</h4>
+              <p class="weui_media_desc singer">
+              </p>
+            </div>
+          </a>
+          <div class="weui_media_desc thumb_wrap">
+            <i data-college="communication" data-id= "<%= id %>" data-vote-num="<%= vote_num %>" data-belong='warp_1' class="iconfont thumb">&#x3443;</i>
+            <span> 100 票</span>
+            <span class="thumb_num"></span>
+            <!-- <a href="" class="listen">试听</a> -->
+          </div>
+        </div>
+
+      </section>
+
+      <section class="list-wrap" id="college-media" style="display: none">
+        <div class="list">
+          <a id="detail-link" href="{{work_link}}" class="weui_media_box weui_media_appmsg">
+            <div class="weui_media_hd">
+              <img id="singer_head" class="weui_media_appmsg_thumb" src="../public/static/img/banhui/banhui.png" alt="">
+            </div>
+            <div class="weui_media_bd">
+              <h4 id="song_name" class="weui_media_title">红岩班</h4>
+              <p class="weui_media_desc singer">
+              </p>
+            </div>
+          </a>
+          <div class="weui_media_desc thumb_wrap">
+            <i data-college="media" data-id= "<%= id %>" data-vote-num="<%= vote_num %>" data-belong='warp_1' class="iconfont thumb">&#x3443;</i>
+            <span> 99 票</span>
+            <span class="thumb_num"></span>
+            <!-- <a href="" class="listen">试听</a> -->
+          </div>
+        </div>
+      </section>
+    </div>
+  <footer>© 红岩网校工作站</footer>
+
+  <script src="http://a.alipayobjects.com/??amui/zepto/1.1.3/zepto.js,static/fastclick/1.0.6/fastclick.min.js"></script>
+  <script src="../public/static/js/index.js"></script>
+  <!-- <script>FastClick.attach(document.body);</script> -->
+  <!-- <script src="./js/index.js?timer={{time}}"></script> -->
+  <!-- <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> -->
+  <script>
+  // var TITLE = '';
+  // var DESC = '';
+  // var LINK = '';
+  // var IMGURL = '//dn-redrock.qbox.me/cyxbs_logo.jpg';
+  // wx.config({
+  //     debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+  //     appId: '{{JSSDK.appid}}', // 必填，公众号的唯一标识
+  //     timestamp: '{{JSSDK.timestamp}}', // 必填，生成签名的时间戳
+  //     nonceStr: '{{JSSDK.string}}', // 必填，生成签名的随机串
+  //     signature: '{{JSSDK.signature}}',// 必填，签名，见附录1
+  //     jsApiList: [
+  //     'onMenuShareTimeline', 
+  //     'onMenuShareAppMessage', 
+  //     'onMenuShareQQ',
+  //     'onMenuShareWeibo',
+  //     'onMenuShareQZone'
+  //     ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+  // });
+  // wx.ready(function () {
+  // wx.onMenuShareTimeline({
+  //   title: TITLE,
+  //   link: LINK,
+  //   imgUrl: IMGURL,
+  //   success: function () {
+  //   },
+  //   cancel: function () {
+  //   }
+  // });
+  // wx.onMenuShareAppMessage({
+  //   title: TITLE,
+  //   desc: DESC,
+  //   link: LINK,
+  //   imgUrl: IMGURL,
+  //   type: '',
+  //   success: function () {
+  //   },
+  //   cancel: function () {
+  //   }
+  // });
+  // wx.onMenuShareQQ({
+  //   title: TITLE,
+  //   desc: DESC,
+  //   link: LINK,
+  //   imgUrl: IMGURL,
+  //   success: function () {
+  //   },
+  //   cancel: function () {
+  //   }
+  // });
+  // wx.onMenuShareWeibo({
+  //   title: TITLE,
+  //   desc: DESC,
+  //   link: LINK,
+  //   imgUrl: IMGURL,
+  //   success: function () {
+  //   },
+  //   cancel: function () {
+  //   }
+  // });
+  // wx.onMenuShareQZone({
+  //   title: TITLE,
+  //   desc: DESC,
+  //   link: LINK,
+  //   imgUrl: IMGURL,
+  //   success: function () {
+  //   },
+  //   cancel: function () {
+  //   }
+  // });
+  // });
+  // wx.error(function(res){
+  // });
+  </script>
+</body>
+</html>
