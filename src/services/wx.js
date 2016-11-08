@@ -24,7 +24,7 @@ export default class WX {
   async getOpenid () {
     // let redirect_uri = 'http://hongyan.cqupt.edu.cn/' + this.http.req.url
     // redirect_uri = UrlEncode(redirect_uri)
-    let redirect_uri = 'localhost:3000/index';
+    let redirect_uri = 'http://localhost:3000/index';
     const APPID = this.appid
     const URL = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/webOauth'
     // const LOCATION = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${APPID}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_userinfo&state=sfasdfasdfefvee#wechat_redirect`
