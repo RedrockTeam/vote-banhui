@@ -1,0 +1,19 @@
+.weui-article {
+  overflow: hidden;
+  text-align: center;
+}
+.weui-article p {
+  margin-top: 20px;
+}
+footer {
+    margin-top: 2.5em;
+    margin-bottom: 5em;
+    width: 100%;
+    text-align: center;
+}
+.class-name {
+  margin-top: 50px;
+}
+.class-pics {
+  width: 100%;
+}
