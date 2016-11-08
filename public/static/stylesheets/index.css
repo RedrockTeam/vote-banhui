@@ -1,0 +1,136 @@
+body {
+    width: 100%;
+    line-height: 1.6;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
+}
+.container {
+    overflow: hidden;
+}
+.join_in {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(245, 245, 245, 1);
+    box-shadow:-10px 0 10px #fff, 10px 0 10px #fff, 0 -2px 5px #555, 0 10px 10px #fff;
+    z-index: 1000;
+} 
+.join_in .weui_btn_area {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.join_in  .weui_btn_primary {
+    width: 8em;
+    margin-top: .2em;
+    margin-bottom: .2em;
+}
+.banner {
+    width: 100%;
+}
+.banner img {
+    display: block;
+    width: 100%;
+}
+.song_list_wrap .weui_media_desc{
+    color: #555;
+    font-size:15px;
+}
+.song_list_wrap {
+}
+.song_list_wrap .weui_cell {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+footer {
+    margin-top: 2.5em;
+    margin-bottom: 5em;
+    width: 100%;
+    text-align: center;
+}
+@font-face {
+    font-family: "iconfont";
+    src: url('iconfont.eot?t=1458823435'); /* IE9*/
+    src: url('iconfont.eot?t=1458823435#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('iconfont.woff?t=1458823435') format('woff'), /* chrome, firefox */
+    url('iconfont.ttf?t=1458823435') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('iconfont.svg?t=1458823435#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+    font-family:"iconfont" !important;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+.song_list {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #e5e5e5;
+}
+.song_list .weui_media_box.weui_media_appmsg .weui_media_hd {
+    width: 70px;
+    height: 70px;
+}
+.singer {
+    margin-top: 4px;
+    margin-bottom: 20px;
+}
+.thumb {
+    position: relative;
+    top: 2px;
+    font-size:25px;
+    line-height: 0;
+    color: #ccc;
+}
+.listen {
+    position: absolute;
+    right: 15px;
+    padding: 0 10px;
+    color: #999;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.thumb_num {
+    margin-right: 10px;
+}
+.thumb_clicked {
+    color: #f55;
+}
+.thumb_wrap {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 150px;
+}
+.explain .weui_media_box .weui_media_desc {
+    display: block;
+}
+.explain .weui_media_box.weui_media_text .weui_media_title {
+    margin-bottom: 0;
+    margin-top: 8px;
+}
+.weui_btn_area .weui_btn_primary {
+    background-color: #3787fb;
+}
+.choose_wrap {
+    width: 100%;
+    overflow: hidden;
+}
+.choose_wrap div {
+    width: 50%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-bottom: 1px solid #e5e5e5;
+    float: left;
+}
+#wrap_2 {
+    display: none;
+}
+.the_main {
+    background: #3787fb;
+    color: #fff;
+}
+.red-icon {
+    color: red !important;
+}
