@@ -8,17 +8,22 @@ import Bodyparser from 'koa-bodyparser'
 import logger from 'koa-logger'
 import koaStatic from 'koa-static-plus'
 import koaOnError from 'koa-onerror'
+import koaCookie from 'koa-cookie';
 import koaSession from 'koa-session'
 import config from './config'
 
 const app = new Koa()
+
+app.keys = ['what the ?????'];
+
 const bodyparser = Bodyparser()
 
 // middlewares
 app.use(convert(bodyparser))
 app.use(convert(json()))
 app.use(convert(logger()))
-app.use(convert(session(app)))
+app.use(convert(koaCookie()))
+app.use(convert(koaSession(app)))
 
 // static
 app.use(convert(koaStatic(path.join(__dirname, '../public'), {
