@@ -8,6 +8,7 @@ import Bodyparser from 'koa-bodyparser'
 import logger from 'koa-logger'
 import koaStatic from 'koa-static-plus'
 import koaOnError from 'koa-onerror'
+import koaSession from 'koa-session'
 import config from './config'
 
 const app = new Koa()
@@ -17,6 +18,7 @@ const bodyparser = Bodyparser()
 app.use(convert(bodyparser))
 app.use(convert(json()))
 app.use(convert(logger()))
+app.use(convert(session(app)))
 
 // static
 app.use(convert(koaStatic(path.join(__dirname, '../public'), {
