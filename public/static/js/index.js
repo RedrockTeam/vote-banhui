@@ -38,7 +38,7 @@ $thumb.on('click', function(e) {
         if(status === 200) {
             location.reload();
         } else {
-            alert('你已经给该学院投过票')
+            alert(data.msg)
         }
     });
 

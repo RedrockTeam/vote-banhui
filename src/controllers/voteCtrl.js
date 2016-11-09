@@ -5,7 +5,6 @@ import voteModel from '../models/vote'
 import db from '../services/db'
 
 const votenum = 1
-
 const timeTools = {
     distanceTime: 28800000,
     dayTime: 86400000,
@@ -16,6 +15,10 @@ const timeTools = {
         return Math.floor(time / this.dayTime)
     }
 }
+
+const startTIme = timeTools.getNormalTime(new Date('Fri Nov 11 2016 00:00:00 ').getTime())
+const endTime = timeTools.getNormalTime(new Date('Fri Nov 12 2016 18:00:00 ').getTime())
+
 const success = {
     status: 200,
     msg: 'success'
@@ -23,19 +26,27 @@ const success = {
 const error = {
     1: {
         status: 404,
-        msg: 'parameter is not valid'
+        msg: '呵呵'
     },
     2: {
         status: 404,
-        msg: 'the number of votes has run out'
+        msg: '你今天已经投过两次票了'
     },
     3: {
         status: 404,
-        msg: 'the number of this academy votes has run out'
+        msg: '你今天已给该学院投过票了'
     },
     4: {
         status: 500,
-        msg: 'something is eroor'
+        msg: '服务器出了点问题'
+    },
+    5: {
+        status: 404,
+        msg: '投票还没开始'
+    },
+    6: {
+        status: 404,
+        msg: '投票已经结束'
     }
 }
 
@@ -45,13 +56,20 @@ export default async (ctx, next) => {
         ctx.body = error[1]
         return
     }
-    const openid = JSON.parse(openidObj).data.openid;
-    let uid = await checkOpenid(openid)
+    const nowTime = timeTools.getNormalTime()
+    if (nowTime < startTIme) {
+        ctx.body = error[5]
+    } else if (nowTime > endTime) {
+        ctx.body = error[6]
+    } else {
+        const openid = JSON.parse(openidObj).data.openid;
+        let uid = await checkOpenid(openid)
 
-    if (!uid)
-        uid = await insertOpenid(openid)
-    const voteinf = await voteLogic(uid, ctx.request.body)
-    ctx.body = voteinf
+        if (!uid)
+            uid = await insertOpenid(openid)
+        const voteinf = await voteLogic(uid, ctx.request.body)
+        ctx.body = voteinf
+    }
 }
 /*
 * 检查该用户openid是否已经存入数据库

@@ -10,7 +10,6 @@ import db from '../services/db'
 }
 */
 export default async function (conf) {
-    console.log(conf)
     try {
         await db.query(
             'insert into vote values(null, ?, ?, ?, ?, ?, ?)', 
