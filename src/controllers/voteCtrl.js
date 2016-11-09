@@ -1,4 +1,7 @@
 import wxService from '../services/wx'
+import getClassInfModel from '../models/get_class_inf'
+import getUserVoteInfModel from '../models/get_user_vote_inf'
+import voteModel from '../models/vote'
 import db from '../services/db'
 
 const votenum = 1
@@ -13,12 +16,11 @@ const timeTools = {
         return Math.floor(time / this.dayTime)
     }
 }
-
+const success = {
+    status: 200,
+    msg: 'success'
+}
 const error = {
-    0: {
-        status: 200,
-        msg: 'success'
-    },
     1: {
         status: 404,
         msg: 'parameter is not valid'
@@ -48,11 +50,7 @@ export default async (ctx, next) => {
 
     if (!uid)
         uid = await insertOpenid(openid)
-
-    const voteinf = await voteLogic(uid, [{
-        academy: 1,
-        classid: 1
-    }])
+    const voteinf = await voteLogic(uid, ctx.request.body)
     ctx.body = voteinf
 }
 /*
@@ -81,65 +79,47 @@ async function insertOpenid (openid) {
     )
     return inf[0].insertId
 }
-async function voteLogic (uid, acad_id) {
-    if (!Array.isArray(acad_id))
-        return error[1]
-    const tmp = duplicateRemoval(acad_id.filter((item) => {
-        return (item.academy === 0 || item.academy === 1)
-    }))
-    if (tmp.length != acad_id.length) {
-        return error[1]
+async function voteLogic (uid, voteQuery) {
+    const data = voteQuery.data
+    const classInf = await getClassInfModel(data.id)
+    let msg;
+    if (classInf.length === 0 || classInf[0].academy_id !== parseInt(data.academy)) {
+        msg = error[1]
+        return msg;
     }
-    if (tmp.length !== 1) {
-        return error[1]
-    }
-    acad_id = tmp
-    const voteinf = await db.query(
-        'select * from vote where vote_user_id = ? and vote_day = ?',
-        [uid, timeTools.getNormalDay()]
-    )
-    const len = voteinf[0].length
-    if (len === 0) {
-        await vote(uid, acad_id)
-        return error[0]
-    } else if (len == 2) {
-        return error[2]
-    } else {
-        const [inf] = voteinf[0]
-        if (acad_id[0].academy == inf.vote_academy_id) {
-            return error[3]
-        } else {
-            await vote(uid, acad_id)
-            return error[0]
+    const toDdayVoteNum = await getUserVoteInfModel(uid, timeTools.getNormalDay())
+    if (toDdayVoteNum.length === 0) {
+        try {
+            await vote(uid, data)
+            msg = success
+        } catch (e) {
+            msg = error[4]
         }
+    } else if (toDdayVoteNum.length === 1) {
+        if (toDdayVoteNum[0].vote_academy_id === parseInt(data.academy)) {
+            msg = error[3]
+        } else {
+            try {
+                await vote(uid, data)
+                msg = success
+            } catch (e) {
+                msg = error[4]
+            }
+        }
+    } else {
+        msg = error[2]
     }
+    return msg
 }
-async function vote (uid, acad_id) {
+async function vote (uid, data) {
     const normalTime = timeTools.getNormalTime()
     const normalDay = timeTools.getNormalDay(normalTime)
-    acad_id.forEach(async (acadIdItem) => {
-        const academyId = await db.query(
-            'select academy_id from class where id = ?',
-            acadIdItem.classid
-        )
-        if (academyId[0].length === 0 || academyId[0][0].academy_id !== acadIdItem.academy)
-            return false
-        await db.query(
-            'insert into vote values(?, ?, ?, ?, ?, ?, ?)',
-            [null, uid, normalTime, acadIdItem.academy, votenum, normalDay, acadIdItem.classid]
-        )
+    await voteModel({
+        vote_user_id: uid,
+        vote_time: normalTime,
+        vote_academy_id: data.academy,
+        vote_num: 1,
+        vote_day: normalDay,
+        vote_class_id: data.id,
     })
-    return true
-}
-
-function duplicateRemoval (arr) {
-    const cache = {}
-    const newArr = []
-    arr.forEach((item) => {
-        if (!cache[item]) {
-            newArr.push(item)
-            cache[item] = true
-        }
-    })
-    return newArr
 }

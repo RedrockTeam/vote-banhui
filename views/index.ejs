@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>投票</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-    <link rel="stylesheet" href="../public/static/css/weui.min.css">
-    <link rel="stylesheet" href="../public/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/weui.min.css">
+    <link rel="stylesheet" href="/static/css/index.css">
   </head>
   <body>
     <!-- <div class="join_in">
@@ -15,7 +15,7 @@
     </div> -->
     <div class="container">
       <div class="banner">
-        <img src="../public/static/img/banner.jpg" alt="banner">
+        <img src="/static/img/banner.jpg" alt="banner">
       </div>
       <section class="explain">
         <div class="weui_panel weui_panel_access">
@@ -40,53 +40,53 @@
         <div data-list-index="1" class="nav-bar">传媒学院</div>
       </section>
       <section class="list-wrap" id="college-communication">
-
+        <% classList[1].forEach(function (item) { %>
         <div class="list">
-          <a id="detail-link" href="{{work_link}}" class="weui_media_box weui_media_appmsg">
+          <a id="detail-link" href="/detail?class_id=<%= item.id %>" class="weui_media_box weui_media_appmsg">
             <div class="weui_media_hd">
-              <img id="singer_head" class="weui_media_appmsg_thumb" src="../public/static/img/banhui/banhui.png" alt="">
+              <img id="singer_head" class="weui_media_appmsg_thumb" src="/static/img/banhui/banhui.png" alt="">
             </div>
             <div class="weui_media_bd">
-              <h4 id="song_name" class="weui_media_title">红岩班</h4>
+              <h4 id="song_name" class="weui_media_title"><%= item.class_name %></h4>
               <p class="weui_media_desc singer">
               </p>
             </div>
           </a>
           <div class="weui_media_desc thumb_wrap">
-            <i data-academy="0" data-id= "<%= id %>" data-vote-num="<%= vote_num %>" data-belong='warp_1' class="iconfont thumb">&#x3443;</i>
-            <span> 100 票</span>
+            <i data-academy="<%= item.academy_id %>" data-id= "<%= item.id %>" data-vote-num="1" data-belong='warp_1' class="iconfont thumb">&#x3443;</i>
+            <span> <%= item.vote_num %>票</span>
             <span class="thumb_num"></span>
-            <!-- <a href="" class="listen">试听</a> -->
           </div>
         </div>
-
+        <% }) %>
       </section>
 
       <section class="list-wrap" id="college-media" style="display: none">
+        <% classList[0].forEach(function (item) { %>
         <div class="list">
           <a id="detail-link" href="{{work_link}}" class="weui_media_box weui_media_appmsg">
             <div class="weui_media_hd">
-              <img id="singer_head" class="weui_media_appmsg_thumb" src="../public/static/img/banhui/banhui.png" alt="">
+              <img id="singer_head" class="weui_media_appmsg_thumb" src="/static/img/banhui/banhui.png" alt="">
             </div>
             <div class="weui_media_bd">
-              <h4 id="song_name" class="weui_media_title">红岩班</h4>
+              <h4 id="song_name" class="weui_media_title"><%= item.class_name %></h4>
               <p class="weui_media_desc singer">
               </p>
             </div>
           </a>
           <div class="weui_media_desc thumb_wrap">
-            <i data-academy="1" data-id= "<%= id %>" data-vote-num="<%= vote_num %>" data-belong='warp_1' class="iconfont thumb">&#x3443;</i>
-            <span> 99 票</span>
+            <i data-academy="<%= item.academy_id %>" data-id= "<%= item.id %>" data-vote-num="1" data-belong='warp_1' class="iconfont thumb">&#x3443;</i>
+            <span> <%= item.vote_num %>票</span>
             <span class="thumb_num"></span>
-            <!-- <a href="" class="listen">试听</a> -->
           </div>
         </div>
+        <% }) %>
       </section>
     </div>
   <footer>© 红岩网校工作站</footer>
 
   <script src="http://a.alipayobjects.com/??amui/zepto/1.1.3/zepto.js,static/fastclick/1.0.6/fastclick.min.js"></script>
-  <script src="../public/static/js/index.js"></script>
+  <script src="/static/js/index.js"></script>
   <!-- <script>FastClick.attach(document.body);</script> -->
   <!-- <script src="./js/index.js?timer={{time}}"></script> -->
   <!-- <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> -->

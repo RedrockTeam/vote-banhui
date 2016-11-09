@@ -106,7 +106,6 @@ function requestPost (url,data) {
       if (err) {
         reject(err)
       } else {
-        console.log(body)
         resolve(JSON.parse(body))
       }
     })
