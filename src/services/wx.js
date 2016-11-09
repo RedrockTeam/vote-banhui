@@ -7,14 +7,14 @@ export default class WX {
     this.appid = 'wx81a4a4b77ec98ff4'
     this.http = http
   }
-  async getJsSdk (self) {
+  async getJsSdk () {
     const URL = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/apiJsTicket'
     const DATA = getData()
     try {
       let RES_INF = await requestPost(URL, DATA)
       RES_INF.timeStamp = DATA.timestamp
       RES_INF.str = DATA.string
-      RES_INF.appid = self.appid
+      RES_INF.appid = this.appid
       RES_INF.signature = hash(`jsapi_ticket=${RES_INF.data}&noncestr=${RES_INF.str}&timestamp=${RES_INF.timeStamp}&url=${'http://' + 'hongyan.cqupt.edu.cn' + this.http.req.url}`, 'sha1')
       return RES_INF
     } catch (e) { 

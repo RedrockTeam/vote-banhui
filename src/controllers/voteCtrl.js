@@ -49,7 +49,10 @@ export default async (ctx, next) => {
     if (!uid)
         uid = await insertOpenid(openid)
 
-    const voteinf = await voteLogic(uid, ctx.query.acad_id)
+    const voteinf = await voteLogic(uid, [{
+        academy: 1,
+        classid: 1
+    }])
     ctx.body = voteinf
 }
 /*
@@ -82,15 +85,15 @@ async function voteLogic (uid, acad_id) {
     if (!Array.isArray(acad_id))
         return error[1]
     const tmp = duplicateRemoval(acad_id.filter((item) => {
-        return (item === 0 || item === 1)
+        return (item.academy === 0 || item.academy === 1)
     }))
     if (tmp.length != acad_id.length) {
         return error[1]
     }
-    acad_id = tmp
-    if (acad_id.length === 0) {
+    if (tmp.length !== 1) {
         return error[1]
     }
+    acad_id = tmp
     const voteinf = await db.query(
         'select * from vote where vote_user_id = ? and vote_day = ?',
         [uid, timeTools.getNormalDay()]
@@ -103,9 +106,7 @@ async function voteLogic (uid, acad_id) {
         return error[2]
     } else {
         const [inf] = voteinf[0]
-        if (acad_id.length == 2) {
-            return error[3]
-        } else if (acad_id[0] == inf.vote_academy_id) {
+        if (acad_id[0].academy == inf.vote_academy_id) {
             return error[3]
         } else {
             await vote(uid, acad_id)
@@ -117,9 +118,15 @@ async function vote (uid, acad_id) {
     const normalTime = timeTools.getNormalTime()
     const normalDay = timeTools.getNormalDay(normalTime)
     acad_id.forEach(async (acadIdItem) => {
+        const academyId = await db.query(
+            'select academy_id from class where id = ?',
+            acadIdItem.classid
+        )
+        if (academyId[0].length === 0 || academyId[0][0].academy_id !== acadIdItem.academy)
+            return false
         await db.query(
-            'insert into vote values(?, ?, ?, ?, ?, ?)',
-            [null, uid, normalTime, acadIdItem, votenum, normalDay]
+            'insert into vote values(?, ?, ?, ?, ?, ?, ?)',
+            [null, uid, normalTime, acadIdItem.academy, votenum, normalDay, acadIdItem.classid]
         )
     })
     return true

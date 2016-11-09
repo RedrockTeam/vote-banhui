@@ -11,6 +11,7 @@ export default async (ctx, next) => {
         ctx.session.openidObj = JSON.stringify(openidObj)
     }
     await ctx.render('index', {
-        title
+        title,
+        jssdk: await wxServiceObj.getJsSdk.call(wxServiceObj)
     })
 }
