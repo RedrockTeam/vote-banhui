@@ -12,20 +12,18 @@
     <h1 class="class-name"><%= data.class_name %></h1>
     <section>
         <section>
-            <h3><%= data.class_inf %></h3>
+            <h3>班级介绍</h3>
+                <img class="banji" src="/static/img/class/class-<%= data.id %>.jpg">
+
             <p>
-                
-                <img class="class-pics" src="/static/img/banner.jpg">
-            </p>
-            <p>
-                友爱的班级级友友爱的班级友爱的班级友爱的班级友爱的班级友爱的班级友爱的班级友爱的班级友爱的班级友爱的班级
+                <%= data.class_inf %>
             </p>
             
         </section>
         <section>
             <h3>班徽介绍</h3>
-            <p>
-                <img src="/static/img/banhui/banhui.png">
+            <p class="banhui-wrap">
+                <img class="banhui" src="/static/img/banhui/banhui-<%= data.id %>.jpg">
             </p>
             <p>
                 <%= data.banhui_inf %>

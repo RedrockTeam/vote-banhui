@@ -1,8 +1,12 @@
 .weui-article {
   overflow: hidden;
   text-align: center;
+  width: 100%;
 }
+
 .weui-article p {
+  text-align: left;
+  text-indent: 30px;
   margin-top: 20px;
 }
 footer {
@@ -16,4 +20,14 @@ footer {
 }
 .class-pics {
   width: 100%;
+}
+.banji {
+    width: 100%;
+}
+.banhui {
+    width: 50%;
+}
+.weui-article .banhui-wrap {
+    text-align: center;
+    text-indent: 0;
 }

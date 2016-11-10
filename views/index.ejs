@@ -44,7 +44,7 @@
         <div class="list">
           <a id="detail-link" href="/detail?class_id=<%= item.id %>" class="weui_media_box weui_media_appmsg">
             <div class="weui_media_hd">
-              <img id="singer_head" class="weui_media_appmsg_thumb" src="/static/img/banhui/banhui.png" alt="">
+              <img id="singer_head" class="weui_media_appmsg_thumb" src="/static/img/banhui/banhui-<%= item.id %>.jpg" alt="">
             </div>
             <div class="weui_media_bd">
               <h4 id="song_name" class="weui_media_title"><%= item.class_name %></h4>
@@ -64,9 +64,9 @@
       <section class="list-wrap" id="college-media" style="display: none">
         <% classList[0].forEach(function (item) { %>
         <div class="list">
-          <a id="detail-link" href="{{work_link}}" class="weui_media_box weui_media_appmsg">
+          <a id="detail-link" href="/detail?class_id=<%= item.id %>" class="weui_media_box weui_media_appmsg">
             <div class="weui_media_hd">
-              <img id="singer_head" class="weui_media_appmsg_thumb" src="/static/img/banhui/banhui.png" alt="">
+              <img id="singer_head" class="weui_media_appmsg_thumb" src="/static/img/banhui/banhui-<%= item.id %>.jpg" alt="">
             </div>
             <div class="weui_media_bd">
               <h4 id="song_name" class="weui_media_title"><%= item.class_name %></h4>
