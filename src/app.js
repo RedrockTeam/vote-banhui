@@ -27,7 +27,7 @@ app.use(convert(koaSession(app)))
 
 // static
 app.use(convert(koaStatic(path.join(__dirname, '../public'), {
-  pathPrefix: ''
+  pathPrefix: '/vote_banhui'
 })))
 
 // views
