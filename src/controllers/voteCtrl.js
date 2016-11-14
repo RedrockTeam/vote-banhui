@@ -5,19 +5,19 @@ import voteModel from '../models/vote'
 import db from '../services/db'
 
 const votenum = 1
-const timeTools = {
-    distanceTime: 28800000,
-    dayTime: 86400000,
-    getNormalTime (time = Date.now()) {
-        return time + this.distanceTime
-    },
-    getNormalDay (time = this.getNormalTime()) {
-        return Math.floor(time / this.dayTime)
-    }
-}
+// const timeTools = {
+//     distanceTime: 28800000,
+//     dayTime: 86400000,
+//     getNormalTime (time = Date.now()) {
+//         return time + this.distanceTime
+//     },
+//     getNormalDay (time = this.getNormalTime()) {
+//         return Math.floor(time / this.dayTime)
+//     }
+// }
 
-const startTIme = timeTools.getNormalTime(new Date('Fri Nov 11 2016 00:00:00 ').getTime())
-const endTime = timeTools.getNormalTime(new Date('Fri Nov 12 2016 18:00:00 ').getTime())
+// const startTIme = timeTools.getNormalTime(new Date('Fri Nov 11 2016 00:00:00 ').getTime())
+// const endTime = timeTools.getNormalTime(new Date('Fri Nov 12 2016 18:00:00 ').getTime())
 
 const success = {
     status: 200,
@@ -50,12 +50,14 @@ const error = {
     }
 }
 
+
 export default async (ctx, next) => {
     const openidObj = ctx.session.openidObj
     if (!openidObj) {
         ctx.body = error[1]
         return
     }
+    
     const nowTime = timeTools.getNormalTime()
     if (nowTime < startTIme) {
         ctx.body = error[5]

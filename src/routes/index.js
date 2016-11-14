@@ -6,7 +6,6 @@ import voteCtrl from '../controllers/voteCtrl'
 const router = Router()
 
 router.get('/index', indexCtrl)
-router.get('/detail', detailCtrl)
 router.post('/vote', voteCtrl)
 
 export default router

@@ -6,9 +6,10 @@
 export default {
   port: 3000,
   db: {
+    port: 3306,
     host: 'localhost',
-    database: 'vote-banhui',
-    username: 'root',
-    password: ''
+    database: 'vote_stdrx',
+    user: 'root',
+    password: 'ming'
   }
 }
