@@ -29,12 +29,30 @@ export default async (ctx, next) => {
     let voting_performance = performance_info.voting
     let finish_performance = performance_info.finish
 
-    // console.log(performance_info);
 
-    ctx.body = performance_info
-    // await ctx.render('index.ejs', {
-        
-    // })
+    pending_performance = classify(pending_performance);
+    voting_performance = classify(voting_performance);
+    finish_performance = classify(finish_performance);
+
+
+
+    await ctx.render('index.ejs', {
+        voting_performance,
+        finish_performance
+    })
+}
+
+function classify(performance) {
+    let obj = {};
+
+    performance.forEach((item)=> {
+        obj[item.type] = obj[item.type] ||  []
+        obj[item.type].push(item)
+    })
+
+
+    return obj
+    
 }
 
 function splitPerformanceOfStatus(performance_info) {

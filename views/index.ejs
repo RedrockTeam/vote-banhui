@@ -23,7 +23,7 @@
             <div class="weui_media_box weui_media_text">
               
               <h4 class="weui_media_title">投票时间: </h4>
-              <p class="weui_media_desc">11月11日-11月12日下午6点</p>
+              <p class="weui_media_desc">11月19日</p>
 
               <h4 class="weui_media_title">奖励: </h4>
               <p class="weui_media_desc">各学院选取前两名进入总决赛
@@ -36,51 +36,62 @@
         </div>
       </section>
       <section class="nav-bar-wrap">
-        <div data-list-index="0" class="nav-bar-active nav-bar">通信学院</div>
-        <div data-list-index="1" class="nav-bar">传媒学院</div>
+        <div data-list-index="0" class="nav-bar-active nav-bar">投票中</div>
+        <div data-list-index="1" class="nav-bar">已结束</div>
       </section>
+
       <section class="list-wrap" id="college-communication">
-        <% classList[1].forEach(function (item) { %>
+      <% for(v in voting_performance) { %>
+        <h2 class="list-title list">
+          <%= v %>
+        </h2>
+        <% voting_performance[v].forEach(function(item) { %>
         <div class="list">
-          <a id="detail-link" href="/vote_banhui/detail?class_id=<%= item.id %>" class="weui_media_box weui_media_appmsg">
+          <a id="detail-link" href="##" class="weui_media_box weui_media_appmsg">
             <div class="weui_media_hd">
-              <img id="singer_head" class="weui_media_appmsg_thumb" src="/vote_banhui/static/img/banhui/banhui-<%= item.id %>.jpg" alt="">
+              <img id="singer_head" class="weui_media_appmsg_thumb" src="/vote_banhui/static/img/banhui/banhui-= item.id .jpg" alt="">
             </div>
             <div class="weui_media_bd">
-              <h4 id="song_name" class="weui_media_title"><%= item.class_name %></h4>
+              <h4 id="song_name" class="weui_media_title"><%=item.performance_name%> </h4>
               <p class="weui_media_desc singer">
               </p>
             </div>
           </a>
           <div class="weui_media_desc thumb_wrap">
-            <i data-academy="<%= item.academy_id %>" data-id= "<%= item.id %>" data-vote-num="1" data-belong='warp_1' class="iconfont thumb">&#x3443;</i>
-            <span> <%= item.vote_num %>票</span>
+            <i data-academy="item.academy_id " data-id="<%= item.id %>" data-vote-num="1" data-belong='warp_1' class="iconfont thumb">&#x3443;</i>
+            <span> <%=item.vote_num%> 票</span>
             <span class="thumb_num"></span>
           </div>
         </div>
         <% }) %>
+      <% } %>
       </section>
 
       <section class="list-wrap" id="college-media" style="display: none">
-        <% classList[0].forEach(function (item) { %>
+        <% for(v in finish_performance) { %>
+        <h2 class="list-title list">
+          <%= v %>
+        </h2>
+        <% finish_performance[v].forEach(function(item) { %>
         <div class="list">
-          <a id="detail-link" href="/vote_banhui/detail?class_id=<%= item.id %>" class="weui_media_box weui_media_appmsg">
+          <a id="detail-link" href="##" class="weui_media_box weui_media_appmsg">
             <div class="weui_media_hd">
-              <img id="singer_head" class="weui_media_appmsg_thumb" src="/vote_banhui/static/img/banhui/banhui-<%= item.id %>.jpg" alt="">
+              <img id="singer_head" class="weui_media_appmsg_thumb" src="/vote_banhui/static/img/banhui/banhui-= item.id .jpg" alt="">
             </div>
             <div class="weui_media_bd">
-              <h4 id="song_name" class="weui_media_title"><%= item.class_name %></h4>
+              <h4 id="song_name" class="weui_media_title"><%=item.performance_name%> </h4>
               <p class="weui_media_desc singer">
               </p>
             </div>
           </a>
           <div class="weui_media_desc thumb_wrap">
-            <i data-academy="<%= item.academy_id %>" data-id= "<%= item.id %>" data-vote-num="1" data-belong='warp_1' class="iconfont thumb">&#x3443;</i>
-            <span> <%= item.vote_num %>票</span>
+            <i data-academy="<%= item.type %>" data-id="<%= item.id %>" data-vote-num="1" data-belong='warp_1' class="iconfont thumb">&#x3443;</i>
+            <span> <%=item.vote_num%> 票</span>
             <span class="thumb_num"></span>
           </div>
         </div>
         <% }) %>
+      <% } %>
       </section>
     </div>
   <footer>© 红岩网校工作站</footer>

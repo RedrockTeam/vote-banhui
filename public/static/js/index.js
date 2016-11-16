@@ -26,14 +26,14 @@ var $thumb = $('.thumb');
 $thumb.on('click', function(e) {
     var $this = $(this);
 
-    var academy = parseInt($this.attr('data-academy'));
+    var academy = parseInt($this.attr('data-type'));
     var id = parseInt($this.attr('data-id'));
     
     var areYouConfirm = confirm("确定将你宝贵的一票投给Ta们吗?");
 
     if(!areYouConfirm) return;
 
-    $.post('/vote', {data: {academy: academy, id: id}}, function(data, textStatus, xhr) {
+    $.post('/vote', {data: {type: academy, id: id}}, function(data, textStatus, xhr) {
         var status = data.status;
         if(status === 200) {
             location.reload();

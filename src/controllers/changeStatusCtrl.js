@@ -10,9 +10,9 @@ export default async function(ctx, next) {
     console.log(status, type);
     console.log(result);
     if(result) {
-        ctx.body = "修改成功"
+        ctx.body = {status: 200}
     } else {
-        ctx.body ='修改失败'
+        ctx.body = {status: 400, msg: '哦豁, 出了一些问题, 请再试一下, 或者联系冯秋明'}
     }
 
 }

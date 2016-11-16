@@ -3,6 +3,30 @@ body {
     line-height: 1.6;
     font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
 }
+select {
+    color: #fff;
+    float: left;
+    margin: 10px 10px;
+}
+select + div {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-right: 6px transparent solid;
+    border-left: 6px transparent solid;
+    border-top: 6px solid #fff;
+    float: left;
+    margin: 17px -20px;
+}
+label {
+    float: left;
+    margin: 0 10px;
+}
+input[type="checkbox"] {
+    margin-top: 14px;
+    float: left;
+}
 .container {
     overflow: hidden;
 }
@@ -134,12 +158,20 @@ footer {
 }
 
 .nav-bar {
-    width: 50%;
     height: 40px;
     text-align: center;
     line-height: 40px;
+    font-size: 12px;
     border-bottom: 1px solid #e5e5e5;
     float: left;
+    background: #fed554;
+    color: #fff;
+}
+.choose-class {
+    width: 40%;
+}
+.choose-status {
+    width: 60%;
 }
 
 .nav-bar-active {
@@ -153,6 +185,13 @@ footer {
 
 .hidden {
     display: none;
+}
+.button_sp_area {
+  font-size: 12px;
+}
+.button_sp_area > a {
+  font-size: 12px !important;
+  margin: 10px 20px 0 0 !important;
 }
 
 .list-title {
