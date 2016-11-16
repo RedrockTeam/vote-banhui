@@ -7,7 +7,7 @@ export default async function (ctx) {
     let password = requestBody.password;
 
     if(username === admin.username && password === admin.password) {
-        ctx.redirect("/changeStatus.html")
+        ctx.redirect("/changeStatus")
     } else {
         ctx.body = '密码错了吧?'
     }
