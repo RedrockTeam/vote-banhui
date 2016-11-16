@@ -29,7 +29,9 @@ export default async (ctx, next) => {
     let voting_performance = performance_info.voting
     let finish_performance = performance_info.finish
 
-    console.log(performance_info);
+    // console.log(performance_info);
+
+    ctx.body = performance_info
     // await ctx.render('index.ejs', {
         
     // })

@@ -11,5 +11,9 @@ export default {
     database: 'vote_stdrx',
     user: 'root',
     password: 'ming'
+  },
+  admin: {
+    username: 'shelian',
+    password: 'adminshelian'
   }
 }
