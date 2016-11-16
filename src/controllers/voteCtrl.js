@@ -55,12 +55,14 @@ const error = {
 
 export default async function(ctx, next) {
     const openidObj = ctx.session.openidObj
-    const requestBody = ctx.request.body;
+    const requestBody = ctx.request.body.data
+
     const type = requestBody.type
     const performanceId = requestBody.id
     const openid = openidObj.data.openid
 
-
+    console.log("type: ", type);
+    console.log(performanceId);
 
     if (!openidObj) {
         ctx.body = error[1]
@@ -112,13 +114,13 @@ export default async function(ctx, next) {
 
 async function isVoted(openid, type) {
     let voteInfo = await get_user_vote_info(openid, type)
-    console.log("voteInfo", voteInfo[0])
+    // console.log("voteInfo", voteInfo[0])
     return !!(voteInfo[0])
 }
 
 async function isVotingType(type) {
     let votingType = await get_type_use_status(type)
-    console.log("votingType: ", votingType)
+    // console.log("votingType: ", votingType)
     return !!(votingType[0])
 }
 

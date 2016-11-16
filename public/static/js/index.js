@@ -26,7 +26,7 @@ var $thumb = $('.thumb');
 $thumb.on('click', function(e) {
     var $this = $(this);
 
-    var academy = parseInt($this.attr('data-type'));
+    var academy = $this.attr('data-type').trim();
     var id = parseInt($this.attr('data-id'));
     
     var areYouConfirm = confirm("确定将你宝贵的一票投给Ta们吗?");

@@ -8,6 +8,7 @@ import db from '../services/db'
 */
 export default async function (conf) {
     try {
+        console.log(conf);
         await db.query(
             'insert into vote_info values(null, ?, ?, ?)', 
             [conf.performanceId, conf.openid, conf.type]
