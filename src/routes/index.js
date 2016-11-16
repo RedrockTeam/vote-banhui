@@ -12,6 +12,12 @@ router.get('/index', indexCtrl)
 router.post('/vote', voteCtrl)
 router.post('/adminLogin', adminCtrl)
 router.post('/changeStatus', changeStatusCtrl)
+router.get('/test', async (ctx) => {
+    await ctx.render('index')
+})
+router.get('/admin', async (ctx) => {
+    await ctx.render('admin')
+})
 
 
 export default router
