@@ -1,4 +1,6 @@
 import wxService from '../services/wx'
+
+import get_performance_info from '../models/get_performance_info.js'
 // import getClassListModel from '../models/get_class_list'
 // import getAcademyListModel from '../models/get_academy_list'
 
@@ -14,19 +16,53 @@ export default async (ctx, next) => {
     }
     console.log(ctx.session.openidObj);
 
-    const voting_type_info = '';
-    const voted_type_info = '';
 
-    await ctx.render('index.ejs', {
-        voting_type_info,
-        voted_type_info
-    })
-    // const acadList = await getAcademyListModel()
-    // const classList = await Promise.all(acadList.map((item) => {
-    //     return getClassListModel(item.id)
-    // }))
-    
+    let performance_info = await get_performance_info()
+
+    // console.log(performance_info)
+
+
+
+    performance_info = splitPerformanceOfStatus(performance_info)
+
+    let pending_performance = performance_info.pending
+    let voting_performance = performance_info.voting
+    let finish_performance = performance_info.finish
+
+    console.log(performance_info);
     // await ctx.render('index.ejs', {
         
     // })
 }
+
+function splitPerformanceOfStatus(performance_info) {
+    let pending = []
+    let finish = []
+    let voting = []
+    performance_info.forEach((item) =>{
+        if(item.status === "pending")
+            pending.push(item);
+        if(item.status === 'finish')
+            finish.push(item);
+        if(item.status === 'voting')
+            voting.push(item);
+    });
+    return {
+        pending,
+        finish,
+        voting
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
