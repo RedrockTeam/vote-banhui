@@ -9,6 +9,6 @@ export default async function (ctx) {
     if(username === admin.username && password === admin.password) {
         ctx.redirect("/changeStatus.html")
     } else {
-        ctx.throw(403, '密码错了吧?')
+        ctx.body = '密码错了吧?'
     }
 }

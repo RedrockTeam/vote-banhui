@@ -7,10 +7,12 @@ export default async function(ctx, next) {
 
     const result = await update_type_status(type, status)
     
+    console.log(status, type);
+    console.log(result);
     if(result) {
-        ctx.throw(200, '修改成功')
+        ctx.body = "修改成功"
     } else {
-        ctx.throw(400, '修改失败')
+        ctx.body ='修改失败'
     }
 
 }
