@@ -15,7 +15,7 @@
     </div> -->
     <div class="container">
       <div class="banner">
-        <img src="/vote_banhui/static/img/banner.jpg" alt="banner">
+        <img src="/vote_banhui/static/img/drx_banner.jpg" alt="banner">
       </div>
       <section class="explain">
         <div class="weui_panel weui_panel_access">
@@ -23,13 +23,13 @@
             <div class="weui_media_box weui_media_text">
               
               <h4 class="weui_media_title">投票时间: </h4>
-              <p class="weui_media_desc">11月19日</p>
+              <p class="weui_media_desc">每轮选手开始表演时开启该类达人的投票通道，待该轮选手所有节目表演完后由主持人宣布停止投票。</p>
 
-              <h4 class="weui_media_title">奖励: </h4>
+              <!--<h4 class="weui_media_title">奖励: </h4>
               <p class="weui_media_desc">各学院选取前两名进入总决赛
-              </p>
+              </p>-->
               <h4 class="weui_media_title">投票规则: </h4>
-              <p class="weui_media_desc">每人每天可投两票, 只可向一个学院投一票
+              <p class="weui_media_desc">每人每类达人只能投一票，综合评委投票达到300票即可成为该类达人，如有多位选手票数超过300票，则取票数最高者成为该类达人，若无选手达到300票则该类达人不予评选
               </p>
             </div>
           </div>
@@ -48,7 +48,7 @@
         <% voting_performance[v].forEach(function(item) { %>
         <div class="list">
             <div class="weui_media_hd">
-              <img class="singer_head" class="weui_media_appmsg_thumb" src="/vote_banhui/static/img/pointers/<%=item.id%>.jpg" alt="">
+              <img class="singer_head" class="weui_media_appmsg_thumb" src="/vote_banhui/static/img/posters/<%=item.id%>.jpg" alt="">
             </div>
             <div class="weui_media_bd">
               <h4 id="song_name" class="weui_media_title"><%=item.performance_name%> </h4>

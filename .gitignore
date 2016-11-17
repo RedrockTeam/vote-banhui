@@ -41,6 +41,7 @@ app
 # JETBRAIN
 .idea
 
+src/config/default.js
 src/config/*
 !src/config/index.js
 !src/config/default.js.idea
