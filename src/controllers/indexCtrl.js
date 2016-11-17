@@ -5,16 +5,16 @@ import get_performance_info from '../models/get_performance_info.js'
 // import getAcademyListModel from '../models/get_academy_list'
 
 export default async (ctx, next) => {
-    const wxServiceObj = new wxService('wx81a4a4b77ec98ff4', ctx)
+    // const wxServiceObj = new wxService('wx81a4a4b77ec98ff4', ctx)
 
-    if (!ctx.session.openidObj) {
-        const openidObj = await wxServiceObj.getOpenid.call(wxServiceObj)
+    // if (!ctx.session.openidObj) {
+    //     const openidObj = await wxServiceObj.getOpenid.call(wxServiceObj)
 
-        if (!openidObj) 
-            return false 
-        ctx.session.openidObj = openidObj
-    }
-    console.log(ctx.session.openidObj);
+    //     if (!openidObj) 
+    //         return false 
+    //     ctx.session.openidObj = openidObj
+    // }
+    // console.log(ctx.session.openidObj);
 
 
     let performance_info = await get_performance_info()

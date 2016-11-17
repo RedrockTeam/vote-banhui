@@ -47,16 +47,14 @@
         </h2>
         <% voting_performance[v].forEach(function(item) { %>
         <div class="list">
-          <a id="detail-link" href="##" class="weui_media_box weui_media_appmsg">
             <div class="weui_media_hd">
-              <img id="singer_head" class="weui_media_appmsg_thumb" src="/vote_banhui/static/img/pointers/<%=item.id%>.jpg" alt="">
+              <img class="singer_head" class="weui_media_appmsg_thumb" src="/vote_banhui/static/img/pointers/<%=item.id%>.jpg" alt="">
             </div>
             <div class="weui_media_bd">
               <h4 id="song_name" class="weui_media_title"><%=item.performance_name%> </h4>
               <p class="weui_media_desc singer">
               </p>
             </div>
-          </a>
           <div class="weui_media_desc thumb_wrap">
             <i data-type="<%= item.type %> " data-id="<%= item.id %>" data-vote-num="1" data-belong='warp_1' class="iconfont thumb">&#x3443;</i>
             <span> <%=item.vote_num%> 票</span>
@@ -74,16 +72,14 @@
         </h2>
         <% finish_performance[v].forEach(function(item) { %>
         <div class="list">
-          <a id="detail-link" href="##" class="weui_media_box weui_media_appmsg">
             <div class="weui_media_hd">
-              <img id="singer_head" class="weui_media_appmsg_thumb" src="/vote_banhui/static/img/pointers/<%=item.id%>.jpg" alt="">
+              <!-- <img class="singer_head" class="weui_media_appmsg_thumb" src="/vote_banhui/static/img/pointers/<%=item.id%>.jpg" alt=""> -->
             </div>
             <div class="weui_media_bd">
               <h4 id="song_name" class="weui_media_title"><%=item.performance_name%> </h4>
               <p class="weui_media_desc singer">
               </p>
             </div>
-          </a>
           <div class="weui_media_desc thumb_wrap">
             <i data-type="<%= item.type %>" data-id="<%= item.id %>" data-vote-num="1" data-belong='warp_1' class="iconfont thumb">&#x3443;</i>
             <span> <%=item.vote_num%> 票</span>

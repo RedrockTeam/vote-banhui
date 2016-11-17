@@ -107,7 +107,7 @@ footer {
 }
 .thumb_wrap {
     position: absolute;
-    bottom: 15px;
+    bottom: 18px;
     right: 15px;
     width: 150px;
 }
@@ -163,7 +163,12 @@ footer {
     background: #fed554;
     color: #fff;
 }
-
+.singer_head {
+    width: 100%;
+}
+#song_name {
+    padding-left: 10px;
+}
 
 
 

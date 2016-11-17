@@ -6,11 +6,11 @@
 export default {
   port: 3000,
   db: {
-    port: 3306,
+    port: 3307,
     host: 'localhost',
     database: 'vote_stdrx',
     user: 'root',
-    password: 'ming'
+    password: ''
   },
   admin: {
     username: 'shelian',
