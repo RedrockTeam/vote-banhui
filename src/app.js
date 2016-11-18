@@ -50,6 +50,7 @@ app.use(async (ctx, next) => {
 
 // response router
 app.use(async (ctx, next) => {
+  console.log(ctx.req);
   await require('./routes').routes()(ctx, next)
 })
 
