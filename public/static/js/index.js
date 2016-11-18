@@ -33,7 +33,7 @@ $thumb.on('click', function(e) {
 
     if(!areYouConfirm) return;
 
-    $.post('/vote', {data: {type: academy, id: id}}, function(data, textStatus, xhr) {
+    $.post('/vote_drx/vote', {data: {type: academy, id: id}}, function(data, textStatus, xhr) {
         var status = data.status;
         if(status === 200) {
             location.reload();
