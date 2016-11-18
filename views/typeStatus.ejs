@@ -10,50 +10,9 @@
   <body>
 
     <div class="container">
-      <!--<section class="nav-bar-wrap">
-        <div data-list-index="0" class="nav-bar choose-class">
-          <select>
-            <option value="所有">所有</option>
-            <option value="体育类">体育类</option>
-            <option value="文艺类">文艺类</option>
-          </select>
-          <div></div>
-        </div>
-        <div data-list-index="1" class="nav-bar choose-status">
-          <label>已结束</label><input data-status="finish" type="checkbox" name="">
-          <label>投票中</label><input data-status="voting" type="checkbox" name="">
-          <label>未开始</label><input data-status="pending" type="checkbox" name="">
-        </div>
-      </section>-->
+
       <section class="list-wrap" id="college-communication">
-        <!--<h2 class="list-title list">
-          体育类
-        </h2>
-        <div class="list weui_media_box class-list" data-type="体育类" data-vote="pending" data-id="0">
-            <div class="weui_media_bd">
-              <h4 id="song_name" class="weui_media_title">节目名称: 雅尔玛 </h4>
-            </div>
-          <span>状态: pending</span>
-          <div class="button_sp_area">
-              <a href="#" data-active="voting" class="weui_btn weui_btn_mini weui_btn_plain_default">设置为已开始</a>
-              <a href="#" data-active="finish" class="weui_btn weui_btn_mini weui_btn_plain_default">设置为已结束</a>
-              <a href="#" data-active="pending" class="weui_btn weui_btn_mini weui_btn_plain_default">设置为未开始</a>
-          </div>
-        </div>
-        <div class="list weui_media_box class-list" data-type="体育类" data-vote="voting" data-id="1">
-            <div class="weui_media_bd">
-              <h4 id="song_name" class="weui_media_title">节目名称: 雅尔玛2121 </h4>
-            </div>
-          <span>状态: voting</span>
-          <div class="button_sp_area">
-              <a href="#" data-active="voting" class="weui_btn weui_btn_mini weui_btn_plain_default">设置为已开始</a>
-              <a href="#" data-active="finish" class="weui_btn weui_btn_mini weui_btn_plain_default">设置为已结束</a>
-              <a href="#" data-active="pending" class="weui_btn weui_btn_mini weui_btn_plain_default">设置为未开始</a>
-          </div>
-        </div>
-        <h2 class="list-title list">
-          文艺类
-        </h2>-->
+
 
         <% type_status.forEach(function(item) { %>
         <div class="list weui_media_box class-list" data-type="<%= item.type %>" data-vote="<%= item.status %>" data-id="<%= item.type %>">
@@ -68,7 +27,7 @@
           </div>
         </div>
         <%})%>
-
+        <a href="##" id="delete-all-vote" style="color: red;" class="weui-btn weui-btn_primary"> 清除空所有投票</a>
       </section>
 
     </div>
@@ -76,6 +35,5 @@
 
   <script src="/vote_drx/static/js/zepto.min.js"></script>
   <script src="/vote_drx/static/js/admin.js"></script>
-  <script>FastClick.attach(document.body);</script>
 </body>
 </html>

@@ -56,3 +56,22 @@ function filterList () {
         }
     })
 }
+
+(function(){
+    $('#delete-all-vote').on('click', function() {
+        var a, b;
+        a = confirm('你确定要清除所有投票吗?! 请谨慎操作!');
+        b = confirm('你真的真的确定要清除所有投票吗??!!  请谨慎操作!');
+
+        if( a && b ) {
+            $.post('/vote_drx/delete_all_vote', function(res) {
+                if(res.status === 200) {
+                    alert('删除成功');
+                } else {
+                    alert(res.msg);
+                }
+            })
+        }
+
+    });
+}())
