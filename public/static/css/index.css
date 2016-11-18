@@ -18,6 +18,12 @@ body {
     margin-top: 0;
     margin-bottom: 0;
 }
+.weui_media_bd {
+    width: 70%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 .join_in  .weui_btn_primary {
     width: 8em;
     margin-top: .2em;
