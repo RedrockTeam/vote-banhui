@@ -7,12 +7,15 @@ import adminCtrl from '../controllers/adminLoginCtrl'
 import changeStatusCtrl from '../controllers/changeStatusCtrl'
 import typeStatusCtrl from '../controllers/typeStatusCtrl'
 
-const router = Router()
+const router = Router({
+    // prefix: '/vote_drx'
+})
+
 
 router.get('/index', indexCtrl)
-router.post('/vote', voteCtrl)
-router.post('/adminLogin', adminCtrl)
-router.post('/changeStatus', changeStatusCtrl)
+router.post('/vote_drx/vote', voteCtrl)
+router.post('/vote_drx/adminLogin', adminCtrl)
+router.post('/vote_drx/changeStatus', changeStatusCtrl)
 
 router.get('/typeStatus', typeStatusCtrl)
 

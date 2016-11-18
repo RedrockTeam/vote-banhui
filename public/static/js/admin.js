@@ -32,7 +32,7 @@ $button_sp_area.on('click', function (e) {
     if (!$target.hasClass('weui_btn'))
         return
     var active = $target.attr('data-active')
-    $.post('/changeStatus', {
+    $.post('/vote_drx/changeStatus', {
         type: $target.parents('.list').attr('data-id'),
         status: active
     }, function (res) {
