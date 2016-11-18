@@ -26,7 +26,9 @@ app.use(convert(koaCookie()))
 app.use(convert(koaSession(app)))
 
 // static
-app.use(convert(koaStatic(path.join(__dirname, '../public'), {})))
+app.use(convert(koaStatic(path.join(__dirname, '../public'), {
+  pathPrefix: '/vote_drx'
+})))
 
 // views
 app.use(views(path.join(__dirname, '../views'), {
