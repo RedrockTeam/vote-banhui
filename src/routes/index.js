@@ -8,7 +8,7 @@ import changeStatusCtrl from '../controllers/changeStatusCtrl'
 import typeStatusCtrl from '../controllers/typeStatusCtrl'
 
 const router = new Router({
-  prefix: '/vote_drx/'
+  prefix: '/vote_drx'
 })
 
 router.get('/index', indexCtrl)
