@@ -36,7 +36,7 @@ const success = {
 const error = {
     1: {
         status: 404,
-        msg: '呵呵'
+        msg: '没有 openid, 请刷新页面, 或使用微信登录'
     },
     2: {
         status: 404,
@@ -59,7 +59,7 @@ export default async function(ctx, next) {
 
     const type = requestBody.type
     const performanceId = requestBody.id
-    const openid = openidObj.data.openid
+    
 
     console.log("type: ", type);
     console.log(performanceId);
@@ -68,6 +68,9 @@ export default async function(ctx, next) {
         ctx.body = error[1]
         return
     }
+
+
+    const openid = openidObj.data.openid
     
     if(! (await isVotingType("voting"))) {
         ctx.body = error[2]

@@ -34,8 +34,6 @@ body {
     color: #555;
     font-size:15px;
 }
-.list_wrap {
-}
 .list_wrap .weui_cell {
     padding-bottom: 0;
     padding-top: 0;
@@ -109,7 +107,7 @@ footer {
     position: absolute;
     bottom: 18px;
     right: 15px;
-    width: 150px;
+    width: 80px;
 }
 .explain .weui_media_box .weui_media_desc {
     display: block;
