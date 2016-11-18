@@ -26,9 +26,7 @@ app.use(convert(koaCookie()))
 app.use(convert(koaSession(app)))
 
 // static
-app.use(convert(koaStatic(path.join(__dirname, '../public'), {
-  pathPrefix: '/'
-})))
+app.use(convert(koaStatic(path.join(__dirname, '../public'), {})))
 
 // views
 app.use(views(path.join(__dirname, '../views'), {
