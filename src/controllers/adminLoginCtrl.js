@@ -8,7 +8,7 @@ export default async function (ctx) {
 
     if(username === admin.username && password === admin.password) {
         ctx.session.admin = true;
-        ctx.redirect("/typeStatus")
+        ctx.redirect("/vote_drx/typeStatus")
     } else {
         ctx.body = '密码错了吧?'
     }
