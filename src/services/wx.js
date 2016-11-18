@@ -22,7 +22,7 @@ export default class WX {
     }
   }
   async getOpenid () {
-    let redirect_uri = 'http://hongyan.cqupt.edu.cn/vote_drx/' + this.http.req.url
+    let redirect_uri = 'http://hongyan.cqupt.edu.cn/vote_drx' + this.http.req.url
     redirect_uri = UrlEncode(redirect_uri)
     // let redirect_uri = 'http://localhost:3000/index';
     const APPID = this.appid
