@@ -105,7 +105,7 @@ footer {
 }
 .thumb_wrap {
     position: absolute;
-    bottom: 18px;
+    bottom: 15px;
     right: 15px;
     width: 80px;
 }
@@ -139,7 +139,10 @@ footer {
     border-bottom: 1px solid #e5e5e5;
     float: left;
 }
-
+.weui_media_bd {
+    position: relative;
+    top: 8px;
+}
 .nav-bar-active {
     background: #0c95f6;
     color: #fff;
