@@ -3,6 +3,7 @@ import wxService from '../services/wx'
 import get_performance_info from '../models/get_performance_info.js'
 
 export default async (ctx, next) => {
+    console.log(ctx.request.body);
     const wxServiceObj = new wxService('wx81a4a4b77ec98ff4', ctx)
 
     if (!ctx.session.openidObj) {

@@ -9,7 +9,7 @@ export default class WX {
   }
   async getJsSdk () {
     const URL = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/apiJsTicket'
-    const DATA = getData()
+    const DATA = formatData()
     try {
       let RES_INF = await requestPost(URL, DATA)
       RES_INF.timeStamp = DATA.timestamp
@@ -22,16 +22,19 @@ export default class WX {
     }
   }
   async getOpenid () {
-    let redirect_uri = 'http://hongyan.cqupt.edu.cn/vote_drx' + this.http.req.url
-    redirect_uri = UrlEncode(redirect_uri)
-    // let redirect_uri = 'http://localhost:3000/vote_drx/index' //+this.http.req.url;
+    let isProduction = process.env.NODE_ENV === 'production';
+    let redirect_uri = 'http://localhost:3000/vote_drx/index' //+this.http.req.url;
+    if(isProduction) {
+      redirect_uri = 'http://hongyan.cqupt.edu.cn/vote_drx' + this.http.req.url
+    }
+    redirect_uri = encodeURIComponent(redirect_uri)
     const APPID = this.appid
     const URL = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/webOauth'
     // const LOCATION = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${APPID}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_userinfo&state=sfasdfasdfefvee#wechat_redirect`
     const LOCATION = `http://hongyan.cqupt.edu.cn/GetWeixinCode/get-weixin-code.html?appid=${APPID}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_userinfo&state=fuckweixin#wechat_redirect`;
     let code = this.http.query['code']
     if (code) {
-      const DATA = getData(null, code)
+      const DATA = formatData(null, code)
       try {
         const RES_INF = await requestPost(URL, DATA)
         return RES_INF
@@ -48,7 +51,7 @@ export default class WX {
    */
   async getBindVerify (openid) {
     const URL = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/bindVerify'
-    const DATA = getData(openid) 
+    const DATA = formatData(openid) 
     try {
       const RES_INF = await requestPost(URL, DATA)
       return RES_INF
@@ -61,7 +64,7 @@ export default class WX {
    */
   async getOpenidVerify (openid) {
     const URL = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/openidVerify'
-    const DATA = getData(openid) 
+    const DATA = formatData(openid) 
     try {
       const RES_INF = await requestPost(URL, DATA)
       return RES_INF
@@ -111,7 +114,9 @@ function requestPost (url,data) {
     })
   })
 }
-function getData (openid, code) {
+
+
+function formatData (openid, code) {
   const token = 'gh_68f0a1ffc303'
   const timeStamp = Math.floor(new Date().getTime()).toString()
   const str = makeStr()
@@ -129,30 +134,3 @@ function getData (openid, code) {
   }
   return data
 }
-function str2asc(str){
-  return str.charCodeAt(0).toString(16)
-}
-function asc2str(str){
-  return String.fromCharCode(str)
-}
-function UrlEncode(str){ 
-  var ret = "" 
-  var strSpecial="!\"#$%&'()*+,/:<=>?[]^`{|}~%" 
-  var tt = "" 
-  for (var i = 0, len = str.length; i < len; i++) { 
-    var chr = str.charAt(i) 
-    var c = str2asc(chr) 
-    tt += chr + ":" + c + "n" 
-  if (parseInt("0x" + c) > 0x7f) { 
-    ret += "%" + c.slice(0,2) + "%" + c.slice(-2) 
-  } else { 
-    if (chr == " ") 
-      ret += "+" 
-    else if (strSpecial.indexOf(chr) != -1) 
-      ret += "%" + c.toString(16) 
-    else 
-      ret += chr 
-    } 
-  } 
-  return ret 
-} 
