@@ -1,6 +1,5 @@
 import {admin} from '../config'
 
-
 export default async function (ctx) {
     const requestBody = ctx.request.body
     let username = requestBody.username;

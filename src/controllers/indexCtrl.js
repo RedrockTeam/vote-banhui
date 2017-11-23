@@ -3,6 +3,7 @@ import wxService from '../services/wx'
 import get_performance_info from '../models/get_performance_info.js'
 
 export default async (ctx, next) => {
+
     console.log(ctx.request.body);
     const wxServiceObj = new wxService('wx81a4a4b77ec98ff4', ctx)
 
@@ -14,6 +15,20 @@ export default async (ctx, next) => {
         ctx.session.openidObj = openidObj
     }
 
+    // // for dev
+    // ctx.session.openidObj = {
+    //     data: {
+    //         openid: 'openid',  
+    //         nickname: 'idsbllp',
+    //         sex: "1",
+    //         province: "PROVINCE",
+    //         city: "CITY",
+    //         country: "COUNTRY",
+    //         headimgurl: "http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
+    //         privilege: ["PRIVILEGE1", "PRIVILEGE2"],
+    //         unionid: "o6_bmasdasdsad6_2sgVt7hMZOPfL"
+    //     }
+    // };
 
     let performance_info = await get_performance_info()
 

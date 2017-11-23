@@ -10,8 +10,8 @@ export default async function (conf) {
     try {
         console.log(conf);
         await db.query(
-            'insert into vote_info values(null, ?, ?, ?)', 
-            [conf.performanceId, conf.openid, conf.type]
+            'insert into vote_info values(null, ?, ?, ?, ?)', 
+            [conf.performanceId, conf.openid, conf.type, Date.now()]
         )
         await db.query(
             'update performance_info set vote_num = vote_num + 1 where id = ? and type = ?',
@@ -19,7 +19,7 @@ export default async function (conf) {
         )
         return true
     } catch (e) {
-        console.log(e)
+        // console.log(e)
         return false
     }
 }

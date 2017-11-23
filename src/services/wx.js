@@ -86,6 +86,7 @@ export default class WX {
     }
   }
 }
+
 function makeStr () {
   let sStr = 'abcdefghijklmnopqistuvwxyz0123456789ABCDEFGHIGKLMNOPQISTUVWXYZ'
   let rStr = ''

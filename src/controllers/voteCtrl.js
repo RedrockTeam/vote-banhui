@@ -36,6 +36,15 @@ const error = {
     4: {
         status: 500,
         msg: '服务器出了点问题'
+    },
+    // 2017年的
+    5: {
+        status: 404,
+        msg: '投票时间已过'
+    },
+    6: {
+        status: 404,
+        msg: '你今天的三次投票机会已用完'
     }
 }
 
@@ -46,27 +55,28 @@ export default async function(ctx, next) {
 
     const type = requestBody.type
     const performanceId = requestBody.id
-    
-
-    console.log("type: ", type);
-    console.log(performanceId);
-
+ 
     if (!openidObj) {
         ctx.body = error[1]
         return
     }
 
-
     const openid = openidObj.data.openid
-    
+   
     if(! (await isVotingType(performanceId))) {
         ctx.body = error[2]
         return
     }
+    // 判断今天是否为该类投票
+    // // console.log("isVoted", (await isVoted(openid, type)))
+    // if(( await isVoted(openid, type))) {
+    //     ctx.body = error[3]
+    //     return
+    // }
 
-    // console.log("isVoted", (await isVoted(openid, type)))
-    if(( await isVoted(openid, type))) {
-        ctx.body = error[3]
+    // 2017 这次可以同时投三票, 一天三票
+    if(( await isVotedThreeTimes(openid, type))) {
+        ctx.body = error[6]
         return
     }
 
@@ -86,12 +96,16 @@ export default async function(ctx, next) {
 }
 
 
+// async function isVoted(openid, type) {
+//     let voteInfo = await get_user_vote_info(openid, type)
+//     return !!(voteInfo[0])
+// }
 
-async function isVoted(openid, type) {
-    let voteInfo = await get_user_vote_info(openid, type)
-    // console.log("voteInfo", voteInfo[0])
-    return !!(voteInfo[0])
+// 2017
+async function isVotedThreeTimes(openid, type) {
+    return (await get_user_vote_info(openid, type))
 }
+
 
 async function isVotingType(performanceId) {
     let votingType = (await get_status(performanceId))[0].status

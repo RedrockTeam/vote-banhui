@@ -12,7 +12,6 @@ const router = Router({
     // prefix: '/vote_drx'
 })
 
-
 router.get('/index', indexCtrl)
 
 router.get('/typeStatus', typeStatusCtrl)
@@ -21,8 +20,5 @@ router.post('/vote_drx/vote', voteCtrl)
 router.post('/vote_drx/adminLogin', adminCtrl)
 router.post('/vote_drx/changeStatus', changeStatusCtrl)
 router.post('/vote_drx/delete_all_vote', delete_all_voteCtrl)
-
-
-
 
 export default router

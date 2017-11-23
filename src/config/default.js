@@ -9,8 +9,8 @@ export default {
     port: 3306,
     host: 'localhost',
     database: 'vote_stdrx',
-    user: 'root',
-    password: 'ming'
+    user: 'idsbllp',
+    password: 'idsbllp'
   },
   admin: {
     username: 'shelian',
