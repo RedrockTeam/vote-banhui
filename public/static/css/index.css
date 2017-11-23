@@ -174,3 +174,6 @@ footer {
     text-overflow: ellipsis;
     padding-left: 10px;
 }
+.rules {
+    white-space: pre-line;
+}
