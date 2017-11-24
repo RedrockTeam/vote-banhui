@@ -27,11 +27,12 @@ export default class WX {
     if(isProduction) {
       redirect_uri = 'http://hongyan.cqupt.edu.cn/vote_drx' + this.http.req.url
     }
+
     redirect_uri = encodeURIComponent(redirect_uri)
     const APPID = this.appid
     const URL = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/webOauth'
-    // const LOCATION = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${APPID}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_userinfo&state=sfasdfasdfefvee#wechat_redirect`
-    const LOCATION = `http://hongyan.cqupt.edu.cn/GetWeixinCode/get-weixin-code.html?appid=${APPID}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_userinfo&state=fuckweixin#wechat_redirect`;
+    const LOCATION = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${APPID}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_userinfo#wechat_redirect`
+    // const LOCATION = `http://hongyan.cqupt.edu.cn/GetWeixinCode/get-weixin-code.html?appid=${APPID}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_base&state=fuckweixin#wechat_redirect`;
     let code = this.http.query['code']
     if (code) {
       const DATA = formatData(null, code)
@@ -42,7 +43,7 @@ export default class WX {
         return false
       }
     } else {
-      this.http.res.writeHead('307', {'Location': LOCATION})
+      this.http.res.writeHead('302', {'Location': LOCATION})
       this.http.res.end()
     }
   }

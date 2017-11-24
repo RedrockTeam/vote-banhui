@@ -6,7 +6,7 @@
     "start": "node bin/development.js",
     "production": "node bin/production.js",
     "debug": "npm run clean && node bin/debug",
-    "build": "npm test && npm run clean && npm run compile",
+    "build": "npm run clean && npm run compile",
     "compile": "babel src/ --out-dir app/ --retain-lines --source-maps",
     "clean": "rm -rf app/",
     "test": "mocha -u bdd --compilers js:babel-core/register",

@@ -1,13 +1,13 @@
 {
   "apps": [{
-    "name": "koa2-startkit",
+    "name": "达人秀投票",
     "script": "bin/production.js",
-    // "cwd": "/absolute/path/to/project",
+    "cwd": "/home/wssgcg1213/vote_drx",
     "exec_mode": "cluster",
-    "instances": 0,
+    "instances": 1,
     "max_memory_restart": "1G",
     "autorestart": true,
-    "node_args": [],
+    "node_args": ["--harmony"],
     "args": [],
     "env": {
       "NODE_ENV": "production"
