@@ -6,9 +6,10 @@ export default class WX {
   constructor(appid, http) {
     this.appid = 'wx81a4a4b77ec98ff4'
     this.http = http
+    this.urlPrefix = 'https://wx.idsbllp.cn'
   }
   async getJsSdk () {
-    const URL = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/apiJsTicket'
+    const URL = this.urlPrefix + '/MagicLoop/index.php?s=/addon/Api/Api/apiJsTicket'
     const DATA = formatData()
     try {
       let RES_INF = await requestPost(URL, DATA)
@@ -25,14 +26,14 @@ export default class WX {
     let isProduction = process.env.NODE_ENV === 'production';
     let redirect_uri = 'http://localhost:3000/vote_drx/index' //+this.http.req.url;
     if(isProduction) {
-      redirect_uri = 'http://hongyan.cqupt.edu.cn/vote_drx' + this.http.req.url
+      redirect_uri = this.urlPrefix + '/vote_drx' + this.http.req.url
     }
 
     redirect_uri = encodeURIComponent(redirect_uri)
     const APPID = this.appid
-    const URL = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/webOauth'
+    const URL = this.urlPrefix + '/MagicLoop/index.php?s=/addon/Api/Api/webOauth'
     const LOCATION = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${APPID}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_userinfo#wechat_redirect`
-    // const LOCATION = `http://hongyan.cqupt.edu.cn/GetWeixinCode/get-weixin-code.html?appid=${APPID}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_base&state=fuckweixin#wechat_redirect`;
+    // const LOCATION = `${this.urlPrefix}/GetWeixinCode/get-weixin-code.html?appid=${APPID}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_base&state=fuckweixin#wechat_redirect`;
     let code = this.http.query['code']
     if (code) {
       const DATA = formatData(null, code)
@@ -51,7 +52,7 @@ export default class WX {
    * 该方法通过openid查询该人是否绑定了学号
    */
   async getBindVerify (openid) {
-    const URL = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/bindVerify'
+    const URL = this.urlPrefix + '/MagicLoop/index.php?s=/addon/Api/Api/bindVerify'
     const DATA = formatData(openid) 
     try {
       const RES_INF = await requestPost(URL, DATA)
@@ -64,7 +65,7 @@ export default class WX {
    * 该方法通过openid查询该人是否关注
    */
   async getOpenidVerify (openid) {
-    const URL = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/openidVerify'
+    const URL = this.urlPrefix + '/MagicLoop/index.php?s=/addon/Api/Api/openidVerify'
     const DATA = formatData(openid) 
     try {
       const RES_INF = await requestPost(URL, DATA)
@@ -77,7 +78,7 @@ export default class WX {
    * 该方法通过openid查询该人信息
    */
   async getUserInf (openid) {
-    const URL = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/userinfo'
+    const URL = this.urlPrefix + '/MagicLoop/index.php?s=/addon/Api/Api/userinfo'
     const DATA = getData(openid) 
     try {
       const RES_INF = await requestPost(URL, DATA)
