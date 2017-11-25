@@ -97,6 +97,34 @@
   <!-- <script src="http://a.alipayobjects.com/??amui/zepto/1.1.3/zepto.js,static/fastclick/1.0.6/fastclick.min.js"></script> -->
   <script src="/vote_drx/static/js/fastclick.js"></script>
   <script src="/vote_drx/static/js/index.js"></script>
+
   <script>FastClick.attach(document.body);</script>
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script src="/vote_drx/static/js/share.js"></script>
+  <script>
+        WXSHARE.config({debug: false});
+        WXSHARE.ready(function() {
+            var option = {
+                  title: "谁是重邮社团达人？你来定！",
+                  link: "https://wx.idsbllp.cn/vote_drx/index",
+                  imgUrl: 'https://wx.idsbllp.cn/vote_drx/static/img/drx_banner.png',
+                  desc: '重庆邮电大学第六届社团达人秀决战之夜',
+                  type: '',
+                  success: function() {
+                      console.log('分享成功');
+                  },
+                  cancel: function() {
+                      console.log('取消分享');
+                  },
+              };
+
+              wx.onMenuShareTimeline(option);
+              wx.onMenuShareAppMessage(option);
+              wx.onMenuShareQQ(option);
+              wx.onMenuShareWeibo(option);
+              wx.onMenuShareQZone(option);
+        });
+
+    </script>
 </body>
 </html>
