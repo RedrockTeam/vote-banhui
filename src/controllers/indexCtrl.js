@@ -34,9 +34,9 @@ export default async (ctx, next) => {
 
     //  performance_info.forEach((item, index, arr) => {
     //      arr[index].vote_num = ~~(arr[index].vote_num * 3);
-    //  })
+    //  }) // 票数乘以3
 
-    performance_info.sort((a, b) => a.vote_num < b.vote_num)   // 按票数排序
+    // performance_info.sort((a, b) => a.vote_num < b.vote_num)   // 按票数排序
 
     performance_info = classify(performance_info, 'status');   // 按 status分类
 

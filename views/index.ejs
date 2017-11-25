@@ -46,7 +46,7 @@
 
       <section class="list-wrap" id="college-communication">
       <% for(v in voting_performance) { %>
-        <h2 class="list-title list">
+        <h2 class="list-title">
           <%= v %>
         </h2>
         <% voting_performance[v].forEach(function(item) { %>
@@ -54,16 +54,14 @@
             <div class="weui_media_hd">
               <img class="singer_head" class="weui_media_appmsg_thumb" src="/vote_drx/static/img/posters/<%=item.id%>.jpg" alt="">
             </div>
-            <div class="weui_media_bd">
-              <h4 id="song_name" class="weui_media_title"><%=item.performance_name%> </h4>
-              <p class="weui_media_desc singer">
-              </p>
+            <div class="singer">
+              <h4 id="song_name" class=""><%=item.performance_name%> </h4>
+              <div class="thumb_wrap">
+                <i data-type="<%= item.type %> " data-id="<%= item.id %>" data-vote-num="1" data-belong='warp_1' class="iconfont thumb">&#x3443;</i>
+                <span> <%= item.vote_num%> 票</span>
+                <span class="thumb_num"></span>
+              </div>
             </div>
-          <div class="weui_media_desc thumb_wrap">
-            <i data-type="<%= item.type %> " data-id="<%= item.id %>" data-vote-num="1" data-belong='warp_1' class="iconfont thumb">&#x3443;</i>
-            <span> <%= item.vote_num%> 票</span>
-            <span class="thumb_num"></span>
-          </div>
         </div>
         <% }) %>
       <% } %>

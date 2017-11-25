@@ -64,9 +64,14 @@ footer {
     overflow: hidden;
 }
 .list {
+    float: left;
+    width: 49%;
     position: relative;
     overflow: hidden;
-    border-bottom: 1px solid #e5e5e5;
+}
+.singer {
+    position: relative;
+    overflow: hidden;
 }
 .list .weui_media_box.weui_media_appmsg .weui_media_hd {
     width: 70px;
@@ -105,9 +110,8 @@ footer {
 }
 .thumb_wrap {
     position: absolute;
-    bottom: 10px;
+    top: 0;
     right: 15px;
-    width: 80px;
 }
 .explain .weui_media_box .weui_media_desc {
     display: block;
@@ -168,7 +172,7 @@ footer {
     width: 100%;
 }
 #song_name {
-    width: 70%;
+    float: left;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
